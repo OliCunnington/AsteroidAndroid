@@ -1,0 +1,184 @@
+[gd_scene load_steps=19 format=3 uid="uid://bfsjrqmonremp"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_0eaps"]
+[ext_resource type="Texture2D" uid="uid://bfuub2npkoxfc" path="res://assets/star.png" id="1_1uq32"]
+[ext_resource type="PackedScene" uid="uid://ly8h5xdnu2ei" path="res://scenes/player.tscn" id="1_rw7t2"]
+[ext_resource type="PackedScene" uid="uid://dlu77y8ukt634" path="res://scenes/debug/android_pop_up_notification.tscn" id="2_0wskh"]
+[ext_resource type="Script" path="res://scripts/managers/scene_manager.gd" id="2_m2w8j"]
+[ext_resource type="PackedScene" uid="uid://byofiw6oju43v" path="res://scenes/game_ui.tscn" id="3_863vp"]
+[ext_resource type="PackedScene" uid="uid://da263pyuxpr6" path="res://scenes/menu_ui.tscn" id="4_axe56"]
+[ext_resource type="PackedScene" uid="uid://jnh208llm1gd" path="res://scenes/about_ui.tscn" id="5_r4y3y"]
+[ext_resource type="PackedScene" uid="uid://b1f7500b7nvxo" path="res://scenes/highscores.tscn" id="6_bhith"]
+[ext_resource type="PackedScene" uid="uid://cx0kgp230swpu" path="res://scenes/asteroid_spawn.tscn" id="6_ca8jy"]
+[ext_resource type="PackedScene" uid="uid://c7srbhqu5nub8" path="res://scenes/pause_screen.tscn" id="9_pvrta"]
+[ext_resource type="PackedScene" uid="uid://cpvyim3v82xx8" path="res://scenes/upgrade_ui_screen.tscn" id="10_omfnn"]
+[ext_resource type="PackedScene" uid="uid://1fdi6h6we60c" path="res://scenes/settings.tscn" id="12_2k2hw"]
+[ext_resource type="AudioStream" uid="uid://b4pu86ole3vm8" path="res://assets/sounds/positive.wav" id="14_lqd06"]
+[ext_resource type="AudioStream" uid="uid://cyqnwj6xh0cmb" path="res://assets/sounds/negative.wav" id="15_o1dgq"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bk8pp"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(-1, 0, 0)
+spread = 5.0
+initial_velocity_min = 10.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8rrxp"]
+resource_local_to_scene = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(-1, 0, 0)
+spread = 5.0
+initial_velocity_min = 1.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xnkk"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_0eaps")
+notification_yoke = ExtResource("2_0wskh")
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="SceneManager" type="Node" parent="Managers"]
+script = ExtResource("2_m2w8j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="Node" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Background"]
+self_modulate = Color(1, 1, 1, 0.568627)
+z_index = -1
+position = Vector2(263, -76)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_bk8pp")
+texture = ExtResource("1_1uq32")
+lifetime = 25.0
+preprocess = 15.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Background"]
+self_modulate = Color(1, 1, 1, 0.568627)
+z_index = -1
+position = Vector2(263, -76)
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_8rrxp")
+lifetime = 512.0
+preprocess = 512.0
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_rw7t2")]
+visible = false
+position = Vector2(256, 455)
+motion_mode = 1
+
+[node name="AsteroidLayer" type="Node" parent="."]
+
+[node name="AsteroidSpawns" type="Node" parent="."]
+
+[node name="Control" parent="AsteroidSpawns" instance=ExtResource("6_ca8jy")]
+offset_left = -89.0
+offset_top = 454.0
+offset_right = -49.0
+offset_bottom = 494.0
+
+[node name="Control2" parent="AsteroidSpawns" instance=ExtResource("6_ca8jy")]
+offset_left = 598.0
+offset_top = 445.0
+offset_right = 638.0
+offset_bottom = 485.0
+emission_dir = Vector2(-1, 0)
+
+[node name="Control3" parent="AsteroidSpawns" instance=ExtResource("6_ca8jy")]
+offset_left = 238.0
+offset_top = -125.0
+offset_right = 278.0
+offset_bottom = -85.0
+emission_dir = Vector2(0, 1)
+
+[node name="Control4" parent="AsteroidSpawns" instance=ExtResource("6_ca8jy")]
+offset_left = 247.0
+offset_top = 997.0
+offset_right = 287.0
+offset_bottom = 1037.0
+emission_dir = Vector2(0, -1)
+
+[node name="UI" parent="." instance=ExtResource("3_863vp")]
+visible = false
+
+[node name="Menu" parent="." instance=ExtResource("4_axe56")]
+
+[node name="About" parent="." instance=ExtResource("5_r4y3y")]
+
+[node name="Highscores" parent="." instance=ExtResource("6_bhith")]
+visible = false
+
+[node name="PauseScreen" parent="." instance=ExtResource("9_pvrta")]
+visible = false
+
+[node name="UpgradeScreen" parent="." instance=ExtResource("10_omfnn")]
+visible = false
+
+[node name="Settings" parent="." instance=ExtResource("12_2k2hw")]
+visible = false
+
+[node name="Boundaries" type="Node" parent="."]
+
+[node name="Control" type="Control" parent="Boundaries"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayArea" type="Area2D" parent="Boundaries/Control"]
+
+[node name="PlayAreaCollider" type="CollisionShape2D" parent="Boundaries/Control/PlayArea"]
+shape = SubResource("RectangleShape2D_5xnkk")
+
+[node name="StartGameSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_lqd06")
+
+[node name="EndGameSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_o1dgq")
+
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="hull_damage" from="Player" to="." method="_on_player_hull_damage"]
+[connection signal="shield_damage" from="Player" to="." method="_on_player_shield_damage"]
+[connection signal="shield_regained" from="Player" to="." method="_on_player_shield_regained"]
+[connection signal="boost_button_pressed" from="UI" to="Player" method="_on_boost_t_button_pressed"]
+[connection signal="boost_button_release" from="UI" to="Player" method="_on_boost_t_button_released"]
+[connection signal="left_button_pressed" from="UI" to="Player" method="_on_left_t_button_pressed"]
+[connection signal="left_button_release" from="UI" to="Player" method="_on_left_t_button_released"]
+[connection signal="pause" from="UI" to="." method="_on_ui_pause"]
+[connection signal="right_button_pressed" from="UI" to="Player" method="_on_right_t_button_pressed"]
+[connection signal="right_button_release" from="UI" to="Player" method="_on_right_t_button_released"]
+[connection signal="shoot_button_pressed" from="UI" to="Player" method="_on_shoot_t_button_pressed"]
+[connection signal="shoot_button_release" from="UI" to="Player" method="_on_shoot_t_button_released"]
+[connection signal="about_button_pressed" from="Menu" to="." method="_on_about_button_pressed"]
+[connection signal="highscores_button_pressed" from="Menu" to="." method="_on_menu_highscores_button_pressed"]
+[connection signal="play_button_pressed" from="Menu" to="." method="_on_play_button_pressed"]
+[connection signal="quit_button_pressed" from="Menu" to="." method="_on_quit_button_pressed"]
+[connection signal="settings_button_pressed" from="Menu" to="." method="_on_menu_settings_button_pressed"]
+[connection signal="back_button_pressed" from="About" to="." method="_on_back_button_pressed"]
+[connection signal="settings_pressed" from="About" to="." method="_on_about_settings_pressed"]
+[connection signal="back_button_pressed" from="Highscores" to="." method="_on_highscores_back_button_pressed"]
+[connection signal="resume" from="PauseScreen" to="." method="_on_pause_screen_resume"]
+[connection signal="hull" from="UpgradeScreen" to="." method="_on_upgrade_screen_hull"]
+[connection signal="rate_of_fire" from="UpgradeScreen" to="." method="_on_upgrade_screen_rate_of_fire"]
+[connection signal="shield" from="UpgradeScreen" to="." method="_on_upgrade_screen_shield"]
+[connection signal="shield_delay" from="UpgradeScreen" to="." method="_on_upgrade_screen_shield_delay"]
+[connection signal="shield_recharge" from="UpgradeScreen" to="." method="_on_upgrade_screen_shield_recharge"]
+[connection signal="settings_back_button_pressed" from="Settings" to="." method="_on_settings_settings_back_button_pressed"]
+[connection signal="body_exited" from="Boundaries/Control/PlayArea" to="." method="_on_play_area_body_exited"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://d11bdeb4tjdp3"]
+
+[ext_resource type="PackedScene" uid="uid://ly8h5xdnu2ei" path="res://scenes/player.tscn" id="1_ha08t"]
+[ext_resource type="PackedScene" uid="uid://byofiw6oju43v" path="res://scenes/game_ui.tscn" id="2_kaydp"]
+[ext_resource type="PackedScene" uid="uid://cpvyim3v82xx8" path="res://scenes/upgrade_ui_screen.tscn" id="3_q5etn"]
+[ext_resource type="PackedScene" uid="uid://c7srbhqu5nub8" path="res://scenes/pause_screen.tscn" id="4_d6w58"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ha08t")]
+
+[node name="UI" parent="." instance=ExtResource("2_kaydp")]
+
+[node name="UpgradeScreen" parent="." instance=ExtResource("3_q5etn")]
+visible = false
+
+[node name="PauseScreen" parent="." instance=ExtResource("4_d6w58")]
+visible = false

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://4b3gb1kc72t2"]
+
+[ext_resource type="Texture2D" uid="uid://dwm0nk0oysihd" path="res://assets/player.png" id="1_6qnp4"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ShieldIcon" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0.692596, 0.692694, 1)
+texture = ExtResource("1_6qnp4")
+offset = Vector2(32, 32)

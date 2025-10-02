@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://1fdi6h6we60c"]
+
+[ext_resource type="Script" path="res://scripts/settings.gd" id="1_cswck"]
+
+[node name="Settings" type="CanvasLayer"]
+script = ExtResource("1_cswck")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="MenuBanner" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Banner in menu"
+
+[node name="GameBanner" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Banner in game"
+
+[node name="Fullscreen" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Fullscreen after game"
+
+[node name="RewardedOnHighscore" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Rewarded Fullscreen 
+on highscore"
+
+[node name="RewardedOnStart" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Rewarded on start"
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BackButton" type="Button" parent="VBoxContainer/Control"]
+layout_mode = 0
+offset_top = 80.0
+offset_bottom = 80.0
+text = "Back"
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="toggled" from="VBoxContainer/MenuBanner" to="." method="_on_menu_banner_toggled"]
+[connection signal="toggled" from="VBoxContainer/GameBanner" to="." method="_on_game_banner_toggled"]
+[connection signal="toggled" from="VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="VBoxContainer/RewardedOnHighscore" to="." method="_on_rewarded_fullscreen_toggled"]
+[connection signal="toggled" from="VBoxContainer/RewardedOnStart" to="." method="_on_rewarded_on_start_toggled"]
+[connection signal="pressed" from="VBoxContainer/Control/BackButton" to="." method="_on_back_button_pressed"]

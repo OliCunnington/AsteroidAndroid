@@ -1,0 +1,141 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpvyim3v82xx8"]
+
+[ext_resource type="Script" path="res://scripts/upgrade_screen.gd" id="1_i1y3j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ch783"]
+size = Vector2(175, 50)
+
+[node name="UpgradeScreen" type="CanvasLayer"]
+script = ExtResource("1_i1y3j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Shield" type="TouchScreenButton" parent="VBoxContainer/Control"]
+shape = SubResource("RectangleShape2D_ch783")
+
+[node name="Label" type="Label" parent="VBoxContainer/Control/Shield"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.5
+offset_top = -22.5
+offset_right = 61.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "+ 1 Shield"
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Hull" type="TouchScreenButton" parent="VBoxContainer/Control2"]
+shape = SubResource("RectangleShape2D_ch783")
+
+[node name="Label" type="Label" parent="VBoxContainer/Control2/Hull"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.5
+offset_top = -22.5
+offset_right = 61.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "+ 1 Hull"
+
+[node name="Control3" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="RateOfFire" type="TouchScreenButton" parent="VBoxContainer/Control3"]
+shape = SubResource("RectangleShape2D_ch783")
+
+[node name="Label" type="Label" parent="VBoxContainer/Control3/RateOfFire"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.5
+offset_top = -22.5
+offset_right = 61.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "+10% Rate of Fire"
+
+[node name="Control4" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ShieldDelay" type="TouchScreenButton" parent="VBoxContainer/Control4"]
+shape = SubResource("RectangleShape2D_ch783")
+
+[node name="Label" type="Label" parent="VBoxContainer/Control4/ShieldDelay"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -118.0
+offset_right = 134.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "-10% Damage Shield Recharge Delay"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Control5" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ShieldRecharge" type="TouchScreenButton" parent="VBoxContainer/Control5"]
+shape = SubResource("RectangleShape2D_ch783")
+
+[node name="Label" type="Label" parent="VBoxContainer/Control5/ShieldRecharge"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -94.0
+offset_right = 129.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "+10% Shield Recharge Rate"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/Control/Shield" to="." method="_on_shield_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control2/Hull" to="." method="_on_hull_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control3/RateOfFire" to="." method="_on_rate_of_fire_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control4/ShieldDelay" to="." method="_on_shield_delay_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control5/ShieldRecharge" to="." method="_on_shield_recharge_pressed"]

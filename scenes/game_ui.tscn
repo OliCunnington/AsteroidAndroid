@@ -1,0 +1,128 @@
+[gd_scene load_steps=11 format=3 uid="uid://byofiw6oju43v"]
+
+[ext_resource type="Script" path="res://scripts/game_ui.gd" id="1_4wock"]
+[ext_resource type="Texture2D" uid="uid://dnw133h5oxq3w" path="res://assets/shoot_button.png" id="1_v4fyg"]
+[ext_resource type="Texture2D" uid="uid://d01ujnby85gag" path="res://assets/move_button.png" id="2_buvqj"]
+[ext_resource type="Texture2D" uid="uid://chfxo7w8najvj" path="res://assets/turn_left_button.png" id="3_nnpi2"]
+[ext_resource type="Texture2D" uid="uid://cr2yltdj76c0n" path="res://assets/turn_right_button.png" id="4_yce7p"]
+[ext_resource type="Script" path="res://scripts/ShieldIndicator.gd" id="6_3u8en"]
+[ext_resource type="Script" path="res://scripts/HullIndicator.gd" id="7_5xndo"]
+[ext_resource type="PackedScene" uid="uid://4b3gb1kc72t2" path="res://scenes/ShieldIcon.tscn" id="7_p3vyo"]
+[ext_resource type="PackedScene" uid="uid://xmcnc4rcuu8i" path="res://scenes/HullIcon.tscn" id="9_nsk16"]
+[ext_resource type="Texture2D" uid="uid://b575hy46nvlu4" path="res://assets/pause_button.png" id="10_b2n45"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_4wock")
+
+[node name="Control3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+
+[node name="ShootTButton" type="TouchScreenButton" parent="Control3"]
+self_modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(-27, -130)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("1_v4fyg")
+
+[node name="BoostTButton" type="TouchScreenButton" parent="Control3"]
+self_modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(-27, -236)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("2_buvqj")
+
+[node name="LeftTButton" type="TouchScreenButton" parent="Control3"]
+self_modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(-128, -181)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("3_nnpi2")
+
+[node name="RightTButton" type="TouchScreenButton" parent="Control3"]
+self_modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(77, -180)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("4_yce7p")
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 40.0
+offset_right = 20.0
+offset_bottom = 80.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.025
+anchor_bottom = 1.025
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "0"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_top = 82.0
+offset_right = -19.0
+offset_bottom = 122.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = -83.0
+offset_right = 40.0
+offset_bottom = 52.0
+
+[node name="ShieldIndicator" type="HBoxContainer" parent="Control/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+script = ExtResource("6_3u8en")
+shield_icon = ExtResource("7_p3vyo")
+
+[node name="HullIndicator" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+script = ExtResource("7_5xndo")
+hull_icon = ExtResource("9_nsk16")
+
+[node name="Control4" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 40.0
+offset_right = 40.0
+offset_bottom = 80.0
+
+[node name="PauseButton" type="TouchScreenButton" parent="Control4"]
+self_modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(25, 25)
+texture_normal = ExtResource("10_b2n45")
+
+[connection signal="pressed" from="Control3/ShootTButton" to="." method="_on_shoot_t_button_pressed"]
+[connection signal="released" from="Control3/ShootTButton" to="." method="_on_shoot_t_button_released"]
+[connection signal="pressed" from="Control3/BoostTButton" to="." method="_on_boost_t_button_pressed"]
+[connection signal="released" from="Control3/BoostTButton" to="." method="_on_boost_t_button_released"]
+[connection signal="pressed" from="Control3/LeftTButton" to="." method="_on_left_t_button_pressed"]
+[connection signal="released" from="Control3/LeftTButton" to="." method="_on_left_t_button_released"]
+[connection signal="pressed" from="Control3/RightTButton" to="." method="_on_right_t_button_pressed"]
+[connection signal="released" from="Control3/RightTButton" to="." method="_on_right_t_button_released"]
+[connection signal="pressed" from="Control4/PauseButton" to="." method="_on_pause_button_pressed"]

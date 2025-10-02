@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx0kgp230swpu"]
+
+[ext_resource type="Script" path="res://scripts/asteroid_spawn.gd" id="1_c1gc4"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 203.0
+offset_top = 209.0
+offset_right = 243.0
+offset_bottom = 249.0
+script = ExtResource("1_c1gc4")
+emission_dir = Vector2(1, 0)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

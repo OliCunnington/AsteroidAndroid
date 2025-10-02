@@ -1,0 +1,111 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1f7500b7nvxo"]
+
+[ext_resource type="Script" path="res://scripts/highscores.gd" id="1_60ckq"]
+[ext_resource type="PackedScene" uid="uid://cmefvmljxumqd" path="res://scenes/highscore.tscn" id="2_c7wew"]
+
+[node name="Highscores" type="CanvasLayer"]
+script = ExtResource("1_60ckq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "HIGHSCORES"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_c7wew")]
+layout_mode = 2
+
+[node name="HBoxContainer2" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_c7wew")]
+layout_mode = 2
+
+[node name="HBoxContainer3" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_c7wew")]
+layout_mode = 2
+
+[node name="HBoxContainer4" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_c7wew")]
+layout_mode = 2
+
+[node name="HBoxContainer5" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_c7wew")]
+layout_mode = 2
+
+[node name="HBoxContainer6" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_c7wew")]
+layout_mode = 2
+
+[node name="HBoxContainer7" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_c7wew")]
+layout_mode = 2
+
+[node name="HBoxContainer8" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_c7wew")]
+layout_mode = 2
+
+[node name="HBoxContainer9" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_c7wew")]
+layout_mode = 2
+
+[node name="HBoxContainer10" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_c7wew")]
+layout_mode = 2
+
+[node name="Backbutton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 32
+text = "Congratulations! You are in the Top 10 Scores.
+
+Enter your name (8 characters)"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Enter name..."
+alignment = 1
+
+[node name="SubmitButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Submit"
+
+[connection signal="visibility_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" to="." method="_on_v_box_container_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/Backbutton" to="." method="_on_backbutton_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/SubmitButton" to="." method="_on_touch_screen_button_pressed"]
