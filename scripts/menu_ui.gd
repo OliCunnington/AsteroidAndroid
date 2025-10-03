@@ -25,3 +25,7 @@ func _on_highscores_button_pressed():
 
 func _on_settings_button_pressed():
 	emit_signal("settings_button_pressed")
+
+
+func _on_upgrades_button_pressed() -> void:
+	pass #TODO
