@@ -29,3 +29,4 @@ func _on_settings_button_pressed():
 
 func _on_upgrades_button_pressed() -> void:
 	pass #TODO
+	#emit_signal("upgrades_button_pressed")
