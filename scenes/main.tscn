@@ -171,6 +171,7 @@ stream = ExtResource("15_o1dgq")
 [connection signal="play_button_pressed" from="Menu" to="." method="_on_play_button_pressed"]
 [connection signal="quit_button_pressed" from="Menu" to="." method="_on_quit_button_pressed"]
 [connection signal="settings_button_pressed" from="Menu" to="." method="_on_menu_settings_button_pressed"]
+[connection signal="upgrades_button_pressed" from="Menu" to="." method="_on_menu_upgrades_button_pressed"]
 [connection signal="back_button_pressed" from="About" to="." method="_on_back_button_pressed"]
 [connection signal="settings_pressed" from="About" to="." method="_on_about_settings_pressed"]
 [connection signal="back_button_pressed" from="Highscores" to="." method="_on_highscores_back_button_pressed"]

@@ -220,6 +220,11 @@ func _on_upgrade_screen_shield_recharge():
 	resume_from_upgrade()
 
 
+func _on_menu_upgrades_button_pressed() -> void:
+	pass # Replace with function body.
+	#TODO needs a player based base stats and shizz
+
+
 func inc_score():
 	score += 1
 	ui.set_score_text(score)
