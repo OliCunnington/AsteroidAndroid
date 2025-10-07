@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bfsjrqmonremp"]
+[gd_scene load_steps=20 format=3 uid="uid://bfsjrqmonremp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_0eaps"]
 [ext_resource type="Texture2D" uid="uid://bfuub2npkoxfc" path="res://assets/star.png" id="1_1uq32"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cpvyim3v82xx8" path="res://scenes/upgrade_ui_screen.tscn" id="10_omfnn"]
 [ext_resource type="PackedScene" uid="uid://1fdi6h6we60c" path="res://scenes/settings.tscn" id="12_2k2hw"]
 [ext_resource type="AudioStream" uid="uid://b4pu86ole3vm8" path="res://assets/sounds/positive.wav" id="14_lqd06"]
+[ext_resource type="PackedScene" uid="uid://dma3jsct6rlt8" path="res://scenes/permanent_upgrade_ui_screen.tscn" id="14_srl68"]
 [ext_resource type="AudioStream" uid="uid://cyqnwj6xh0cmb" path="res://assets/sounds/negative.wav" id="15_o1dgq"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bk8pp"]
@@ -126,6 +127,10 @@ visible = false
 [node name="Settings" parent="." instance=ExtResource("12_2k2hw")]
 visible = false
 
+[node name="PermanentUpgradeScreen" parent="." node_paths=PackedStringArray("player") instance=ExtResource("14_srl68")]
+visible = false
+player = NodePath("../Player")
+
 [node name="Boundaries" type="Node" parent="."]
 
 [node name="Control" type="Control" parent="Boundaries"]
@@ -182,4 +187,5 @@ stream = ExtResource("15_o1dgq")
 [connection signal="shield_delay" from="UpgradeScreen" to="." method="_on_upgrade_screen_shield_delay"]
 [connection signal="shield_recharge" from="UpgradeScreen" to="." method="_on_upgrade_screen_shield_recharge"]
 [connection signal="settings_back_button_pressed" from="Settings" to="." method="_on_settings_settings_back_button_pressed"]
+[connection signal="exit_pressed" from="PermanentUpgradeScreen" to="." method="_on_permanent_upgrade_screen_exit_pressed"]
 [connection signal="body_exited" from="Boundaries/Control/PlayArea" to="." method="_on_play_area_body_exited"]

@@ -12,6 +12,7 @@ extends Node2D
 @onready var upgrade_screen = $UpgradeScreen
 @onready var settings = $Settings
 @onready var player = $Player
+@onready var permanent_upgrade_screen = $PermanentUpgradeScreen
 @onready var play_area_collider = $Boundaries/Control/PlayArea/PlayAreaCollider
 @onready var end_game_sound: AudioStreamPlayer = $EndGameSound
 @onready var start_game_sound: AudioStreamPlayer = $StartGameSound
@@ -156,6 +157,16 @@ func _on_settings_settings_back_button_pressed():
 	menu.visible = true
 
 
+func _on_menu_upgrades_button_pressed() -> void:
+	menu.visible = false
+	permanent_upgrade_screen.visible = true
+
+
+func _on_permanent_upgrade_screen_exit_pressed() -> void:
+	permanent_upgrade_screen.visible = false
+	menu.visible = true
+	
+
 func _on_play_area_body_exited(body):
 	if body is Asteroid:
 		print_debug("asteroiod exit play area")
@@ -218,11 +229,6 @@ func _on_upgrade_screen_shield_delay():
 func _on_upgrade_screen_shield_recharge():
 	player.shield_recharge_time *= 0.9
 	resume_from_upgrade()
-
-
-func _on_menu_upgrades_button_pressed() -> void:
-	pass # Replace with function body.
-	#TODO needs a player based base stats and shizz
 
 
 func inc_score():
@@ -305,3 +311,5 @@ func show_notification(string : String):
 	#add_child(notifi)
 	#notifi.init(string)
 	pass
+
+	

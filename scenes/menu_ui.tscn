@@ -31,7 +31,6 @@ text = "Highscores"
 
 [node name="UpgradesButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-disabled = true
 text = "Upgrades"
 
 [node name="AboutButton" type="Button" parent="VBoxContainer"]

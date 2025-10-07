@@ -7,8 +7,8 @@ signal settings_back_button_pressed
 @onready var game_banner = $VBoxContainer/GameBanner
 @onready var rewarded_on_highscore = $VBoxContainer/RewardedOnHighscore
 @onready var rewarded_on_start = $VBoxContainer/RewardedOnStart
-@onready var native_advanced = $VBoxContainer/NativeAdvanced
-@onready var on_open = $VBoxContainer/OnOpen
+#@onready var native_advanced = $VBoxContainer/NativeAdvanced
+#@onready var on_open = $VBoxContainer/OnOpen
 
 
 func _ready():
@@ -24,8 +24,8 @@ func _ready():
 	fullscreen.button_pressed = AdManager.fullscreen_after_game
 	rewarded_on_highscore.button_pressed = AdManager.rewarded_on_highscore
 	rewarded_on_start.button_pressed = AdManager.rewarded_on_start
-	native_advanced.button_pressed = AdManager.native_advanced
-	on_open.button_pressed = AdManager.on_open
+	#native_advanced.button_pressed = AdManager.native_advanced
+	#on_open.button_pressed = AdManager.on_open
 
 
 func _on_back_button_pressed():
