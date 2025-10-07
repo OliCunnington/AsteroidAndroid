@@ -34,6 +34,7 @@ var boosting = false
 var rotation_direction := 0.0
 var shield_recharge_delay : float = 10.0
 var shield_recharge_time : float = 5.0
+var total_score : int = 0
 
 
 func _process(delta):
@@ -181,3 +182,10 @@ func handle_audio():
 	elif !boosting_animation.visible:
 		engine_sound.stop()
 		
+
+func get_score() -> int:
+	return total_score
+
+
+func change_score(s):
+	total_score += s

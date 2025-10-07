@@ -87,6 +87,7 @@ func _on_player_dead():
 	for asteroid in $AsteroidLayer.get_children():
 		asteroid.queue_free()
 	highscores.check_score(score)
+	player.change_score(score)
 	highscores.visible = true
 
 
