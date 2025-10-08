@@ -36,6 +36,14 @@ var shield_recharge_delay : float = 10.0
 var shield_recharge_time : float = 5.0
 var total_score : int = 0
 
+###
+# need to make total score and permanents upgrades persist between games
+# json that ish?
+# add settings too
+# add a all_add_off() and counter for playtime, 
+# prompt first time users and consistent players to turn on some adds
+###
+
 
 func _process(delta):
 	handle_audio()
