@@ -44,6 +44,9 @@ var total_score : int = 0
 # prompt first time users and consistent players to turn on some adds
 ###
 
+func _ready():
+	pass
+
 
 func _process(delta):
 	handle_audio()
@@ -197,3 +200,20 @@ func get_score() -> int:
 
 func change_score(s):
 	total_score += s
+
+
+func _save():
+	var file = FileAccess.open(FileManager.PROGRESS_FILE, FileAccess.WRITE)
+	file.store_var(_to_dict())
+
+func _load():
+	var file = FileAccess.open(FileManager.PROGRESS_FILE, FileAccess.READ)
+	_from_dict(file.read_var(true))
+
+
+func _to_dict():
+	pass
+
+
+func _from_dict(d):
+	pass
