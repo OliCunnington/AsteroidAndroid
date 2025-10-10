@@ -43,3 +43,14 @@ func _on_shield_recharge_pressed() -> void:
 func _on_visibility_changed() -> void:
 	if visible:
 		label.text = str(player.get_score())
+
+
+func _check_balanance(price) -> bool:
+	return price <= player.get_score()
+
+
+func _purchase(control):
+	var p = int(control.PriceLabel.text)
+	player.change_score(-p)
+	control.PriceLabel.text = str(p*2) 
+	#emit signal?

@@ -51,6 +51,15 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "+ 1 Shield"
 
+[node name="PriceLabel" type="Label" parent="VBoxContainer/Control"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 33.0
+offset_right = 24.0
+offset_bottom = 56.0
+text = "10"
+horizontal_alignment = 1
+
 [node name="Control2" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 
@@ -72,6 +81,14 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "+ 1 Hull"
 
+[node name="PriceLabel" type="Label" parent="VBoxContainer/Control2"]
+offset_left = -16.0
+offset_top = 33.0
+offset_right = 24.0
+offset_bottom = 56.0
+text = "10"
+horizontal_alignment = 1
+
 [node name="Control3" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 
@@ -92,6 +109,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "+10% Rate of Fire"
+
+[node name="PriceLabel" type="Label" parent="VBoxContainer/Control3"]
+offset_left = -16.0
+offset_top = 33.0
+offset_right = 24.0
+offset_bottom = 56.0
+text = "10"
+horizontal_alignment = 1
 
 [node name="Control4" type="Control" parent="VBoxContainer"]
 layout_mode = 2
@@ -117,6 +142,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="PriceLabel" type="Label" parent="VBoxContainer/Control4"]
+offset_left = -16.0
+offset_top = 33.0
+offset_right = 24.0
+offset_bottom = 56.0
+text = "10"
+horizontal_alignment = 1
+
 [node name="Control5" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 
@@ -140,6 +173,14 @@ text = "+10% Shield Recharge Rate"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="PriceLabel" type="Label" parent="VBoxContainer/Control5"]
+offset_left = -16.0
+offset_top = 33.0
+offset_right = 24.0
+offset_bottom = 56.0
+text = "10"
+horizontal_alignment = 1
 
 [node name="Control6" type="Control" parent="VBoxContainer"]
 layout_mode = 2
