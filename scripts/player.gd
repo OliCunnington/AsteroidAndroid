@@ -7,6 +7,8 @@ class_name Player
 @export var start_shield = 0
 @export var start_health = 1
 @export var start_rof = 0.75
+@export var start_shield_recharge_delay : float = 10.0
+@export var start_shield_recharge_time : float = 5.0
 
 @onready var screen_size = get_viewport_rect().size
 @onready var animation_player = $AnimationPlayer
@@ -207,13 +209,23 @@ func _load():
 #Need to save/load
 #	hull -> start_health
 #	shield -> start_shield
-#	recharge rate
-#	recharge delay
+#	recharge rate -> start_
+#	recharge delay -> start_
 #	rof -> start_rof
 
-func _to_dict():
-	pass
+func _to_dict() -> Dictionary:
+	return {
+		"hull" : start_health,
+		"shield" : start_shield,
+		"rof" : start_rof,
+		"recharge_time" : start_shield_recharge_time,
+		"recharge_delay" : start_shield_recharge_delay
+	}
 
 
 func _from_dict(d):
-	pass
+	start_health = d["hull"]
+	start_shield = d["shield"]
+	start_rof = d["rof"]
+	start_shield_recharge_time = d["recharge_time"]
+	start_shield_recharge_delay = d["recharge_delay"]
