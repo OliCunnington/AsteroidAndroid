@@ -3,6 +3,11 @@ extends CanvasLayer
 @export var player : Player
 
 @onready var label: Label = $Label
+@onready var shield_price_label: Label = $VBoxContainer/Control/PriceLabel
+@onready var hull_price_label: Label = $VBoxContainer/Control2/PriceLabel
+@onready var rof_price_label: Label = $VBoxContainer/Control3/PriceLabel
+@onready var delay_price_label: Label = $VBoxContainer/Control4/PriceLabel
+@onready var recharge_price_label: Label = $VBoxContainer/Control5/PriceLabel
 
 signal exit_pressed
 
@@ -21,23 +26,23 @@ func _on_exit_pressed() -> void:
 
 
 func _on_shield_pressed() -> void:
-	pass # Replace with function body.
+	_purchase(shield_price_label)
 
 
 func _on_hull_pressed() -> void:
-	pass # Replace with function body.
+	_purchase(hull_price_label)
 
 
 func _on_rate_of_fire_pressed() -> void:
-	pass # Replace with function body.
+	_purchase(rof_price_label)
 
 
 func _on_shield_delay_pressed() -> void:
-	pass # Replace with function body.
+	_purchase(delay_price_label)
 
 
 func _on_shield_recharge_pressed() -> void:
-	pass # Replace with function body.
+	_purchase(recharge_price_label)
 
 
 func _on_visibility_changed() -> void:
@@ -49,8 +54,8 @@ func _check_balanance(price) -> bool:
 	return price <= player.get_score()
 
 
-func _purchase(control):
-	var p = int(control.PriceLabel.text)
+func _purchase(label):
+	var p = int(label.text)
 	player.change_score(-p)
-	control.PriceLabel.text = str(p*2) 
-	#emit signal?
+	label.text = str(p*2) 
+	#emit signal? or handle here?
