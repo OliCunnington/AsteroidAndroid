@@ -47,7 +47,11 @@ func _on_shield_recharge_pressed() -> void:
 
 func _on_visibility_changed() -> void:
 	if visible:
-		label.text = str(player.get_score())
+		_update_label()
+
+
+func _update_label():
+	label.text = str(player.get_score())
 
 
 func _check_balanance(price) -> bool:
@@ -56,6 +60,9 @@ func _check_balanance(price) -> bool:
 
 func _purchase(label):
 	var p = int(label.text)
-	player.change_score(-p)
-	label.text = str(p*2) 
-	#emit signal? or handle here?
+	if _check_balanance(p):
+		player.change_score(-p)
+		label.text = str(p*2) 
+		_update_label()
+	else:
+		pass
