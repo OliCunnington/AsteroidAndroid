@@ -26,23 +26,28 @@ func _on_exit_pressed() -> void:
 
 
 func _on_shield_pressed() -> void:
-	_purchase(shield_price_label)
+	if _purchase(shield_price_label):
+		player.start_shield += 1
 
 
 func _on_hull_pressed() -> void:
-	_purchase(hull_price_label)
+	if _purchase(hull_price_label):
+		player.start_health += 1
 
 
 func _on_rate_of_fire_pressed() -> void:
-	_purchase(rof_price_label)
+	if _purchase(rof_price_label):
+		player.start_rof *= 0.9
 
 
 func _on_shield_delay_pressed() -> void:
-	_purchase(delay_price_label)
+	if _purchase(delay_price_label):
+		player.start_shield_recharge_delay *= 0.9
 
 
 func _on_shield_recharge_pressed() -> void:
-	_purchase(recharge_price_label)
+	if _purchase(recharge_price_label):
+		player.start_shield_recharge_time *= 0.9
 
 
 func _on_visibility_changed() -> void:
@@ -64,5 +69,6 @@ func _purchase(label):
 		player.change_score(-p)
 		label.text = str(p*2) 
 		_update_label()
+		return true
 	else:
-		pass
+		return false
