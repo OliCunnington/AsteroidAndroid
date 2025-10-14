@@ -302,6 +302,7 @@ grow_horizontal = 2
 grow_vertical = 2
 show_percentage = false
 
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]
 [connection signal="timeout" from="ShieldRechargeTimer" to="." method="_on_shield_recharge_timer_timeout"]

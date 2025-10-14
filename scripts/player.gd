@@ -40,7 +40,7 @@ var total_score : int = 100
 
 
 func _ready():
-	pass
+	_load()
 
 
 func _process(delta):
@@ -203,7 +203,8 @@ func _save():
 
 func _load():
 	var file = FileAccess.open(FileManager.PROGRESS_FILE, FileAccess.READ)
-	_from_dict(file.read_var(true))
+	if file:
+		_from_dict(file.get_var(true))
 
 
 #Need to save/load
@@ -212,6 +213,8 @@ func _load():
 #	recharge rate -> start_
 #	recharge delay -> start_
 #	rof -> start_rof
+#	total_score
+# 	upgrade prices???
 
 func _to_dict() -> Dictionary:
 	return {
@@ -219,7 +222,8 @@ func _to_dict() -> Dictionary:
 		"shield" : start_shield,
 		"rof" : start_rof,
 		"recharge_time" : start_shield_recharge_time,
-		"recharge_delay" : start_shield_recharge_delay
+		"recharge_delay" : start_shield_recharge_delay,
+		"total_score" : total_score
 	}
 
 
@@ -229,3 +233,8 @@ func _from_dict(d):
 	start_rof = d["rof"]
 	start_shield_recharge_time = d["recharge_time"]
 	start_shield_recharge_delay = d["recharge_delay"]
+	total_score = d["total_score"]
+
+
+func _on_tree_exiting() -> void:
+	_save()
