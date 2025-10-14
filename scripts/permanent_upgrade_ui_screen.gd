@@ -13,7 +13,7 @@ signal exit_pressed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	_load()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -72,3 +72,36 @@ func _purchase(label):
 		return true
 	else:
 		return false
+
+
+func _on_tree_exiting() -> void:
+	_save()
+
+
+func _save():
+	var file = FileAccess.open(FileManager.UPGRADE_FILE, FileAccess.WRITE)
+	file.store_var(_to_dict())
+
+
+func _load():
+	var file = FileAccess.open(FileManager.UPGRADE_FILE, FileAccess.READ)
+	if file:
+		_from_dict(file.get_var(true))
+
+
+func _from_dict(d):
+	shield_price_label.text = str(d["shield"])
+	hull_price_label.text = str(d["hull"])
+	rof_price_label.text = str(d["rof"])
+	delay_price_label.text = str(d["delay"])
+	recharge_price_label.text = str(d["recharge"])
+
+
+func _to_dict():
+	return {
+		"shield" : int(shield_price_label.text),
+		"hull" : int(hull_price_label.text),
+		"rof" : int(rof_price_label.text),
+		"delay" : int(delay_price_label.text),
+		"recharge" : int(delay_price_label.text)
+	}
