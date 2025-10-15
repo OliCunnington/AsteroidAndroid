@@ -1,0 +1,122 @@
+[gd_scene load_steps=2 format=3 uid="uid://hcyjh8i3wc7q"]
+
+[ext_resource type="Texture2D" uid="uid://cv2wp1o28v6c" path="res://assets/pencil-square.svg" id="1_3m3m7"]
+
+[node name="PlayerProfile" type="Node"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+modulate = Color(0.219501, 0.219501, 0.219501, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PlayerName" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "..."
+
+[node name="EditNameButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("1_3m3m7")
+
+[node name="TotalGames" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/TotalGames"]
+layout_mode = 2
+text = "Total Games"
+
+[node name="Label2" type="Label" parent="VBoxContainer/TotalGames"]
+layout_mode = 2
+horizontal_alignment = 2
+
+[node name="StartingHull" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/StartingHull"]
+layout_mode = 2
+text = "Hull/Health"
+
+[node name="Label2" type="Label" parent="VBoxContainer/StartingHull"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="StartingShield" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/StartingShield"]
+layout_mode = 2
+text = "Shield"
+
+[node name="Label2" type="Label" parent="VBoxContainer/StartingShield"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="StartingROF" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/StartingROF"]
+layout_mode = 2
+text = "Rate of Fire"
+
+[node name="Label3" type="Label" parent="VBoxContainer/StartingROF"]
+modulate = Color(0.427493, 0.427493, 0.427493, 1)
+layout_mode = 2
+text = "0.75"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/StartingROF"]
+layout_mode = 2
+text = "0.75"
+horizontal_alignment = 2
+
+[node name="StartingDelay" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/StartingDelay"]
+layout_mode = 2
+text = "Shield Recharge Delay"
+
+[node name="Label3" type="Label" parent="VBoxContainer/StartingDelay"]
+modulate = Color(0.427493, 0.427493, 0.427493, 1)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/StartingDelay"]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="StartingRecharge" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/StartingRecharge"]
+layout_mode = 2
+text = "Shield Recharge"
+
+[node name="Label3" type="Label" parent="VBoxContainer/StartingRecharge"]
+modulate = Color(0.427493, 0.427493, 0.427493, 1)
+layout_mode = 2
+text = "5"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/StartingRecharge"]
+layout_mode = 2
+text = "5"
+horizontal_alignment = 2
