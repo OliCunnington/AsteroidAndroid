@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://hcyjh8i3wc7q"]
+[gd_scene load_steps=3 format=3 uid="uid://hcyjh8i3wc7q"]
 
+[ext_resource type="Script" path="res://scenes/player_profile.gd" id="1_0o67q"]
 [ext_resource type="Texture2D" uid="uid://cv2wp1o28v6c" path="res://assets/pencil-square.svg" id="1_3m3m7"]
 
-[node name="PlayerProfile" type="Node"]
+[node name="PlayerProfile" type="CanvasLayer"]
+script = ExtResource("1_0o67q")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
@@ -34,7 +36,7 @@ alignment = 1
 layout_mode = 2
 text = "Total Games"
 
-[node name="Label2" type="Label" parent="VBoxContainer/TotalGames"]
+[node name="total" type="Label" parent="VBoxContainer/TotalGames"]
 layout_mode = 2
 horizontal_alignment = 2
 
@@ -46,7 +48,7 @@ alignment = 1
 layout_mode = 2
 text = "Hull/Health"
 
-[node name="Label2" type="Label" parent="VBoxContainer/StartingHull"]
+[node name="hull" type="Label" parent="VBoxContainer/StartingHull"]
 layout_mode = 2
 text = "1"
 horizontal_alignment = 2
@@ -59,7 +61,7 @@ alignment = 1
 layout_mode = 2
 text = "Shield"
 
-[node name="Label2" type="Label" parent="VBoxContainer/StartingShield"]
+[node name="shield" type="Label" parent="VBoxContainer/StartingShield"]
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
@@ -78,7 +80,7 @@ layout_mode = 2
 text = "0.75"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer/StartingROF"]
+[node name="rof" type="Label" parent="VBoxContainer/StartingROF"]
 layout_mode = 2
 text = "0.75"
 horizontal_alignment = 2
@@ -97,7 +99,7 @@ layout_mode = 2
 text = "10"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer/StartingDelay"]
+[node name="delay" type="Label" parent="VBoxContainer/StartingDelay"]
 layout_mode = 2
 text = "10"
 horizontal_alignment = 2
@@ -116,7 +118,9 @@ layout_mode = 2
 text = "5"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer/StartingRecharge"]
+[node name="recharge" type="Label" parent="VBoxContainer/StartingRecharge"]
 layout_mode = 2
 text = "5"
 horizontal_alignment = 2
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
