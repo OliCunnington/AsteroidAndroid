@@ -37,6 +37,7 @@ var rotation_direction := 0.0
 var shield_recharge_delay : float = 10.0
 var shield_recharge_time : float = 5.0
 var total_score : int = 100
+var total_games : int = 0
 
 
 func _ready():
