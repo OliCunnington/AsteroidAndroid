@@ -13,6 +13,7 @@ extends Node2D
 @onready var settings = $Settings
 @onready var player = $Player
 @onready var permanent_upgrade_screen = $PermanentUpgradeScreen
+@onready var player_profile: CanvasLayer = $PlayerProfile
 @onready var play_area_collider = $Boundaries/Control/PlayArea/PlayAreaCollider
 @onready var end_game_sound: AudioStreamPlayer = $EndGameSound
 @onready var start_game_sound: AudioStreamPlayer = $StartGameSound
@@ -314,3 +315,13 @@ func show_notification(string : String):
 	pass
 
 	
+
+
+func _on_player_profile_back_button_pressed() -> void:
+	player_profile.visible = false
+	menu.visible = true
+
+
+func _on_menu_profile_button_pressed() -> void:
+	menu.visible = false
+	player_profile.visible = true

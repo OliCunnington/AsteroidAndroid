@@ -6,6 +6,7 @@ signal quit_button_pressed
 signal highscores_button_pressed
 signal settings_button_pressed
 signal upgrades_button_pressed
+signal profile_button_pressed
 
 
 func _on_play_button_pressed():
@@ -30,3 +31,7 @@ func _on_settings_button_pressed():
 
 func _on_upgrades_button_pressed() -> void:
 	emit_signal("upgrades_button_pressed")
+
+
+func _on_profile_button_pressed() -> void:
+	emit_signal("profile_button_pressed")

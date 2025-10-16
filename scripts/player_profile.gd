@@ -8,7 +8,10 @@ extends CanvasLayer
 @onready var recharge: Label = $VBoxContainer/StartingRecharge/recharge
 
 @export var player: Player
-# Called when the node enters the scene tree for the first time.
+
+signal back_button_pressed
+
+
 func _ready() -> void:
 	_load_vals()
 
@@ -25,3 +28,7 @@ func _load_vals():
 	rof.text = str(player.start_rof)
 	delay.text = str(player.shield_recharge_delay)
 	recharge.text = str(player.start_shield_recharge_time)
+
+
+func _on_back_button_pressed() -> void:
+	emit_signal("back_button_pressed")

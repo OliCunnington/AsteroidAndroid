@@ -172,6 +172,7 @@ func die():
 	print("Player died")
 	shooting = false
 	progress_bar.visible = false
+	total_games += 1
 	animation_player.play("die")
 
 

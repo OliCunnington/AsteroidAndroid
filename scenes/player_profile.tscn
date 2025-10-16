@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://hcyjh8i3wc7q"]
 
-[ext_resource type="Script" path="res://scenes/player_profile.gd" id="1_0o67q"]
+[ext_resource type="Script" path="res://scripts/player_profile.gd" id="1_0o67q"]
 [ext_resource type="Texture2D" uid="uid://cv2wp1o28v6c" path="res://assets/pencil-square.svg" id="1_3m3m7"]
 
 [node name="PlayerProfile" type="CanvasLayer"]
@@ -123,4 +123,9 @@ layout_mode = 2
 text = "5"
 horizontal_alignment = 2
 
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
