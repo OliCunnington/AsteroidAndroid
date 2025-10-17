@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var delay: Label = $VBoxContainer/StartingDelay/delay
 @onready var recharge: Label = $VBoxContainer/StartingRecharge/recharge
 @onready var popup: Popup = $VBoxContainer/Popup
+@onready var confirmation_dialog: ConfirmationDialog = $ConfirmationDialog
 
 @export var player: Player
 
@@ -50,8 +51,28 @@ func _on_reset_back_button_pressed() -> void:
 
 
 func _on_reset_progress_pressed() -> void:
-	pass # Replace with function body.
+	_confirm_reset(FileManager.PROGRESS_FILE)
 
 
 func _on_reset_highscores_pressed() -> void:
-	pass # Replace with function body.
+	_confirm_reset(FileManager.HIGHSCORE_FILE)
+
+
+func _confirm_reset(s):
+	var st = ""
+	if s == FileManager.PROGRESS_FILE:
+		st = "Are you sure you want to reset Player Progress?" 
+	elif s == FileManager.HIGHSCORE_FILE:
+		st = "Are you sure you want to reset Highscores?" 
+	confirmation_dialog.dialog_text = st
+	confirmation_dialog.confirmed.connect(_reset.bind(s))
+	confirmation_dialog.canceled.connect(_cancel)
+	confirmation_dialog.visible = true
+
+
+func _reset(s):
+	confirmation_dialog.visible = false
+
+
+func _cancel():
+	confirmation_dialog.visible = false
