@@ -225,7 +225,8 @@ func _to_dict() -> Dictionary:
 		"rof" : start_rof,
 		"recharge_time" : start_shield_recharge_time,
 		"recharge_delay" : start_shield_recharge_delay,
-		"total_score" : total_score
+		"total_score" : total_score,
+		"total_games" : total_games
 	}
 
 
@@ -236,6 +237,7 @@ func _from_dict(d):
 	start_shield_recharge_time = d["recharge_time"]
 	start_shield_recharge_delay = d["recharge_delay"]
 	total_score = d["total_score"]
+	total_games = d["total_games"]
 
 
 func _on_tree_exiting() -> void:
