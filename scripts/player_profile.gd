@@ -71,6 +71,9 @@ func _confirm_reset(s):
 
 
 func _reset(s):
+	print_debug(DirAccess.remove_absolute(s))
+	if s == FileManager.PROGRESS_FILE:
+		print_debug(DirAccess.remove_absolute(FileManager.UPGRADE_FILE))
 	confirmation_dialog.visible = false
 
 
