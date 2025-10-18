@@ -127,7 +127,7 @@ horizontal_alignment = 2
 layout_mode = 2
 text = "Back"
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer"]
+[node name="VSeparator" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="ResetButton" type="Button" parent="VBoxContainer"]
@@ -139,67 +139,77 @@ text = "RESET
 [node name="Popup" type="Popup" parent="VBoxContainer"]
 initial_position = 1
 size = Vector2i(181, 101)
-always_on_top = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Popup"]
-self_modulate = Color(0.154876, 0.154876, 0.154876, 1)
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Popup"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -86.5
+offset_left = -90.5
 offset_top = -50.5
-offset_right = 86.5
+offset_right = 90.5
 offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Popup/MarginContainer"]
+self_modulate = Color(0.154876, 0.154876, 0.154876, 1)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 32
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Popup/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Popup/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="VBoxContainer/Popup/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/Popup/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "RESET PROGRESS"
 vertical_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Popup/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Popup/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResetProgress" type="Button" parent="VBoxContainer/Popup/VBoxContainer/HBoxContainer"]
+[node name="ResetProgress" type="Button" parent="VBoxContainer/Popup/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "X"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Popup/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Popup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Popup/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="VBoxContainer/Popup/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "RESET HIGHSCORES"
 vertical_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Popup/VBoxContainer/HBoxContainer2"]
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Popup/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResetHighscores" type="Button" parent="VBoxContainer/Popup/VBoxContainer/HBoxContainer2"]
+[node name="ResetHighscores" type="Button" parent="VBoxContainer/Popup/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "X"
 
-[node name="ResetBackButton" type="Button" parent="VBoxContainer/Popup/VBoxContainer"]
+[node name="ResetBackButton" type="Button" parent="VBoxContainer/Popup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back"
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
-initial_position = 2
+initial_position = 1
+popup_window = true
+dialog_text = "Are you sure you want to reset Player Progress?"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Popup/VBoxContainer/HBoxContainer/ResetProgress" to="." method="_on_reset_progress_pressed"]
-[connection signal="pressed" from="VBoxContainer/Popup/VBoxContainer/HBoxContainer2/ResetHighscores" to="." method="_on_reset_highscores_pressed"]
-[connection signal="pressed" from="VBoxContainer/Popup/VBoxContainer/ResetBackButton" to="." method="_on_reset_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Popup/MarginContainer/VBoxContainer/HBoxContainer/ResetProgress" to="." method="_on_reset_progress_pressed"]
+[connection signal="pressed" from="VBoxContainer/Popup/MarginContainer/VBoxContainer/HBoxContainer2/ResetHighscores" to="." method="_on_reset_highscores_pressed"]
+[connection signal="pressed" from="VBoxContainer/Popup/MarginContainer/VBoxContainer/ResetBackButton" to="." method="_on_reset_back_button_pressed"]
