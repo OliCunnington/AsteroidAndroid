@@ -71,11 +71,25 @@ func _confirm_reset(s):
 
 
 func _reset(s):
-	print_debug(DirAccess.remove_absolute(s))
+	var f = FileAccess.open(s, FileAccess.WRITE)
+	#print_debug(DirAccess.remove_absolute(s))
 	if s == FileManager.PROGRESS_FILE:
-		print_debug(DirAccess.remove_absolute(FileManager.UPGRADE_FILE))
+		f.store_var(FileManager.PROGRESS_DEFAULT)
+		f = FileAccess.open(FileManager.UPGRADE_FILE, FileAccess.WRITE)
+		f.store_var(FileManager.UPGRADES_DEFAULT)
+	else:
+		f.store_var(FileManager.HIGHSCORE_DEFAULT)
+		#print_debug(DirAccess.remove_absolute(FileManager.UPGRADE_FILE))
+		
 	confirmation_dialog.visible = false
-
+	_disconnect()
 
 func _cancel():
 	confirmation_dialog.visible = false
+	_disconnect()
+
+
+func _disconnect():
+	confirmation_dialog.canceled.disconnect(_cancel)
+	confirmation_dialog.canceled.disconnect(_reset)
+	

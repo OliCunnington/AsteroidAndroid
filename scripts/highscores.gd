@@ -18,7 +18,7 @@ func _ready():
 		var temp_vals = file.get_var(true)
 		for val in temp_vals:
 			var score_val = ScoreVal.new()
-			score_val.from_dict(temp_vals[val])
+			score_val.from_dict(val)
 			values.append(score_val)
 		load_scores()
 

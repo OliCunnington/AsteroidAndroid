@@ -63,11 +63,11 @@ func _check_balanance(price) -> bool:
 	return price <= player.get_score()
 
 
-func _purchase(label):
-	var p = int(label.text)
+func _purchase(_label):
+	var p = int(_label.text)
 	if _check_balanance(p):
 		player.change_score(-p)
-		label.text = str(p*2) 
+		_label.text = str(p*2) 
 		_update_label()
 		return true
 	else:
