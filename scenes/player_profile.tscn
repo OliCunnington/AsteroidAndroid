@@ -202,11 +202,6 @@ text = "X"
 layout_mode = 2
 text = "Back"
 
-[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
-initial_position = 1
-popup_window = true
-dialog_text = "Are you sure you want to reset Player Progress?"
-
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]

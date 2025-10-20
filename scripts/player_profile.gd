@@ -7,7 +7,7 @@ extends CanvasLayer
 @onready var delay: Label = $VBoxContainer/StartingDelay/delay
 @onready var recharge: Label = $VBoxContainer/StartingRecharge/recharge
 @onready var popup: Popup = $VBoxContainer/Popup
-@onready var confirmation_dialog: ConfirmationDialog = $ConfirmationDialog
+#@onready var confirmation_dialog: ConfirmationDialog = $ConfirmationDialog
 
 @export var player: Player
 
@@ -60,14 +60,16 @@ func _on_reset_highscores_pressed() -> void:
 
 func _confirm_reset(s):
 	var st = ""
+	var cd = ConfirmationDialog.new()
 	if s == FileManager.PROGRESS_FILE:
-		st = "Are you sure you want to reset Player Progress?" 
+		cd.dialog_text = "Are you sure you want to reset Player Progress?" 
 	elif s == FileManager.HIGHSCORE_FILE:
-		st = "Are you sure you want to reset Highscores?" 
-	confirmation_dialog.dialog_text = st
-	confirmation_dialog.confirmed.connect(_reset.bind(s))
-	confirmation_dialog.canceled.connect(_cancel)
-	confirmation_dialog.visible = true
+		cd.dialog_text = "Are you sure you want to reset Highscores?" 
+	#confirmation_dialog.dialog_text = st
+	cd.confirmed.connect(_reset.bind(s))
+	cd.canceled.connect(_cancel)
+	add_child(cd)
+	cd.visible = true
 
 
 func _reset(s):
@@ -77,19 +79,23 @@ func _reset(s):
 		f.store_var(FileManager.PROGRESS_DEFAULT)
 		f = FileAccess.open(FileManager.UPGRADE_FILE, FileAccess.WRITE)
 		f.store_var(FileManager.UPGRADES_DEFAULT)
+		player._load()
+		_load_vals()
 	else:
 		f.store_var(FileManager.HIGHSCORE_DEFAULT)
 		#print_debug(DirAccess.remove_absolute(FileManager.UPGRADE_FILE))
 		
-	confirmation_dialog.visible = false
+	#confirmation_dialog.visible = false
 	_disconnect()
 
 func _cancel():
-	confirmation_dialog.visible = false
+	#confirmation_dialog.visible = false
 	_disconnect()
 
 
 func _disconnect():
-	confirmation_dialog.canceled.disconnect(_cancel)
-	confirmation_dialog.canceled.disconnect(_reset)
+	#confirmation_dialog.canceled.disconnect(_cancel)
+	#confirmation_dialog.canceled.disconnect(_reset)
+	#find_child("ConfirmationDialog").queue_free()
+	pass
 	

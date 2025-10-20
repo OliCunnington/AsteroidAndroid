@@ -57,6 +57,7 @@ func _on_visibility_changed() -> void:
 
 func _update_label():
 	label.text = str(player.get_score())
+	_load()
 
 
 func _check_balanance(price) -> bool:
@@ -67,7 +68,8 @@ func _purchase(_label):
 	var p = int(_label.text)
 	if _check_balanance(p):
 		player.change_score(-p)
-		_label.text = str(p*2) 
+		_label.text = str(p*2)
+		_save() 
 		_update_label()
 		return true
 	else:
@@ -90,11 +92,13 @@ func _load():
 
 
 func _from_dict(d):
-	shield_price_label.text = str(d["shield"])
-	hull_price_label.text = str(d["hull"])
-	rof_price_label.text = str(d["rof"])
-	delay_price_label.text = str(d["delay"])
-	recharge_price_label.text = str(d["recharge"])
+	#print(d)
+	if d:
+		shield_price_label.text = str(d["shield"])
+		hull_price_label.text = str(d["hull"])
+		rof_price_label.text = str(d["rof"])
+		delay_price_label.text = str(d["delay"])
+		recharge_price_label.text = str(d["recharge"])
 
 
 func _to_dict():

@@ -150,7 +150,6 @@ func screen_wrap():
 
 
 func damage():
-	
 	if !shield_timer.is_stopped():
 		shield_timer.stop()
 	if !shield_recharge_timer.is_stopped():

@@ -13,14 +13,7 @@ signal back_button_pressed
 
 func _ready():
 	print("ready called")
-	if FileAccess.file_exists(FileManager.HIGHSCORE_FILE):
-		var file = FileAccess.open(FileManager.HIGHSCORE_FILE, FileAccess.READ)
-		var temp_vals = file.get_var(true)
-		for val in temp_vals:
-			var score_val = ScoreVal.new()
-			score_val.from_dict(val)
-			values.append(score_val)
-		load_scores()
+	_load()
 
 
 func _on_backbutton_pressed():
@@ -58,12 +51,31 @@ func sort_scores():
 
 func save_scores():
 	var file = FileAccess.open(FileManager.HIGHSCORE_FILE, FileAccess.WRITE)
-	var dict = {}
+	var dict = []
 	for val in values:
-		dict[val] = val.to_dict()
+		dict.append(val.to_dict())
+	print(dict)
 	file.store_var(dict)
 
 
 func load_scores():
 	for i in range(values.size()):
 		highscores.get_child(i).set_from_score_val(values[i])
+
+
+func _load():
+	values = []
+	if FileAccess.file_exists(FileManager.HIGHSCORE_FILE):
+		var file = FileAccess.open(FileManager.HIGHSCORE_FILE, FileAccess.READ)
+		var temp_vals = file.get_var(true)
+		for val in temp_vals:
+			var score_val = ScoreVal.new()
+			score_val.from_dict(val)
+			values.append(score_val)
+		print(values)
+		load_scores()
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		_load()

@@ -7,17 +7,18 @@ const UPGRADE_FILE = "user://upgrades.save"
 
 
 const HIGHSCORE_DEFAULT = [
-		{"name": "","date": "","score": 0,"color": "#000000"},
-		{"name": "","date": "","score": 0,"color": "#000000"},
-		{"name": "","date": "","score": 0,"color": "#000000"},
-		{"name": "","date": "","score": 0,"color": "#000000"},
-		{"name": "","date": "","score": 0,"color": "#000000"},
-		{"name": "","date": "","score": 0,"color": "#000000"},
-		{"name": "","date": "","score": 0,"color": "#000000"},
-		{"name": "","date": "","score": 0,"color": "#000000"},
-		{"name": "","date": "","score": 0,"color": "#000000"},
-		{"name": "","date": "","score": 0,"color": "#000000"},
+		{"name": "-","date": "-","score": -1,"color": "#000000"},
+		{"name": "-","date": "-","score": -1,"color": "#000000"},
+		{"name": "-","date": "-","score": -1,"color": "#000000"},
+		{"name": "-","date": "-","score": -1,"color": "#000000"},
+		{"name": "-","date": "-","score": -1,"color": "#000000"},
+		{"name": "-","date": "-","score": -1,"color": "#000000"},
+		{"name": "-","date": "-","score": -1,"color": "#000000"},
+		{"name": "-","date": "-","score": -1,"color": "#000000"},
+		{"name": "-","date": "-","score": -1,"color": "#000000"},
+		{"name": "-","date": "-","score": -1,"color": "#000000"},
 	]
+
 const PROGRESS_DEFAULT = {
 		"hull" : 1,
 		"shield" : 0,
