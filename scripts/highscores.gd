@@ -7,6 +7,7 @@ extends CanvasLayer
 
 var last_score : int
 var values : Array[ScoreVal]
+var color = Color.WHITE
 
 signal back_button_pressed
 
@@ -30,7 +31,14 @@ func _on_touch_screen_button_pressed():
 func check_score(score):
 	if score >= highscores.get_child(highscores.get_child_count() - 1).get_score():
 		if AdManager.rewarded_on_highscore:
-			pass # Handle rewarded in here???
+			var cp = ColorPicker.new()
+			add_child(cp)
+			cp.color_changed.connect(func (c):
+				remove_child(cp)
+				color = c
+			)
+		else:
+			color = Color.WHITE
 		last_score = score
 		highscores_container.visible = false
 		new_highscore.visible = true
