@@ -16,10 +16,10 @@ func _set_score(_name, _score, _date, _color):
 	date.self_modulate = _color
 
 
-func set_score(in_name, in_score):
+func set_score(in_name, in_score, color):
 	if in_name.length() > 8:
 		in_name = "%s%s" % [in_name.substr(0, 8) , "*"]
-	_set_score(in_name, in_score, Time.get_datetime_string_from_system(false, true), text_color)
+	_set_score(in_name, in_score, Time.get_datetime_string_from_system(false, true), color)
 
 
 func set_from_score_val(score_val):

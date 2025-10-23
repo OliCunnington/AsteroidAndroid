@@ -33,6 +33,7 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2"]
@@ -106,7 +107,11 @@ alignment = 1
 layout_mode = 2
 text = "Submit"
 
+[node name="ColorPicker" type="ColorPicker" parent="MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" to="." method="_on_v_box_container_visibility_changed"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/Backbutton" to="." method="_on_backbutton_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/SubmitButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="color_changed" from="MarginContainer/Panel/MarginContainer/ColorPicker" to="." method="_on_color_picker_color_changed"]

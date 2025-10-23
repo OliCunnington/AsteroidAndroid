@@ -116,8 +116,9 @@ visible = false
 
 [node name="About" parent="." instance=ExtResource("5_r4y3y")]
 
-[node name="Highscores" parent="." instance=ExtResource("6_bhith")]
+[node name="Highscores" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_bhith")]
 visible = false
+player = NodePath("../Player")
 
 [node name="PauseScreen" parent="." instance=ExtResource("9_pvrta")]
 visible = false
