@@ -34,12 +34,6 @@ func _on_touch_screen_button_pressed():
 func check_score(score):
 	if score >= highscores.get_child(highscores.get_child_count() - 1).get_score():
 		if AdManager.rewarded_on_highscore:
-			#var cp = ColorPicker.new()
-			#add_child(cp)
-			#cp.color_changed.connect(func (c):
-				#remove_child(cp)
-				#color = c
-			#)
 			color_picker.visible = true
 			player.total_score += score
 		else:

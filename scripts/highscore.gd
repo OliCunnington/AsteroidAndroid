@@ -11,6 +11,7 @@ func _set_score(_name, _score, _date, _color):
 	name_label.text = _name
 	score.text = str(_score)
 	date.text = _date
+	text_color = _color
 	name_label.self_modulate = _color
 	score.self_modulate = _color
 	date.self_modulate = _color

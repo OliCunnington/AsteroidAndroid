@@ -4,7 +4,7 @@ class_name ScoreVal
 var name: String
 var date: String
 var score: int
-var color: String
+var color: Color
 
 
 func to_dict():
