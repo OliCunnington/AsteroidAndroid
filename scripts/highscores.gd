@@ -29,6 +29,7 @@ func _on_touch_screen_button_pressed():
 	sort_scores()
 	highscores_container.visible = true
 	new_highscore.visible = false
+	last_score = -1
 
 
 func check_score(score):
