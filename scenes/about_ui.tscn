@@ -31,7 +31,7 @@ theme_override_font_sizes/mono_font_size = 28
 theme_override_font_sizes/normal_font_size = 28
 theme_override_font_sizes/bold_font_size = 28
 bbcode_enabled = true
-text = "Starter project to get familiar with and past tutorials using Godot/Redot game engine as well as establish workflow for larger projects.
+text = "Starter project to get familiar with and past tutorials using Godot/Redot game engine, Google AdMob, as well as establish workflow for larger projects.
 
 Support further development:
 [url=kofi]KoFi[/url]
