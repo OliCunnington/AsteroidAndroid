@@ -112,7 +112,8 @@ emission_dir = Vector2(0, -1)
 [node name="UI" parent="." instance=ExtResource("3_863vp")]
 visible = false
 
-[node name="Menu" parent="." instance=ExtResource("4_axe56")]
+[node name="Menu" parent="." node_paths=PackedStringArray("settings") instance=ExtResource("4_axe56")]
+settings = NodePath("../Settings")
 
 [node name="About" parent="." instance=ExtResource("5_r4y3y")]
 

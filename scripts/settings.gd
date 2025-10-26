@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name SettingsScene
 
 signal settings_back_button_pressed
 
@@ -84,3 +85,14 @@ func from_dict(dict):
 func _on_tree_exited():
 	var file = FileAccess.open(FileManager.SETTINGS_FILE, FileAccess.WRITE)
 	file.store_var(to_dict())
+
+
+func all_off() -> bool:
+	var mb = menu_banner.button_pressed
+	var gb = game_banner.button_pressed
+	var fs = fullscreen.button_pressed
+	var roh = rewarded_on_highscore.button_pressed
+	var ros = rewarded_on_start.button_pressed
+	var a = not mb and not gb and not fs and not roh and not ros
+	#print_debug(a, mb, gb, fs, roh, ros)
+	return a
