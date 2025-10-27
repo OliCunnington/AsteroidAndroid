@@ -68,6 +68,7 @@ func _ready():
 	if AdManager.banner_in_menu:
 		banner_advert()
 		#ad_view.show()
+	highscores.last_score = -1
 
 
 func _on_player_dead():

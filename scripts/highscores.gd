@@ -4,7 +4,9 @@ extends CanvasLayer
 @onready var highscores = $MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer
 @onready var name_input = $MarginContainer/Panel/MarginContainer/VBoxContainer/LineEdit
 @onready var new_highscore = $MarginContainer/Panel/MarginContainer/VBoxContainer
-@onready var color_picker: ColorPicker = $MarginContainer/Panel/MarginContainer/ColorPicker
+@onready var color_picker_button: Button = $MarginContainer/Panel/MarginContainer/VBoxContainer3/Button
+@onready var color_picker: ColorPicker = $MarginContainer/Panel/MarginContainer/VBoxContainer3/ColorPicker
+@onready var color_picker_container: VBoxContainer = $MarginContainer/Panel/MarginContainer/VBoxContainer3
 
 @export var player : Player
 
@@ -35,7 +37,7 @@ func _on_touch_screen_button_pressed():
 func check_score(score):
 	if score >= highscores.get_child(highscores.get_child_count() - 1).get_score():
 		if AdManager.rewarded_on_highscore:
-			color_picker.visible = true
+			color_picker_container.visible = true
 			player.total_score += score
 		else:
 			color = Color.WHITE
@@ -80,7 +82,7 @@ func _load():
 			var score_val = ScoreVal.new()
 			score_val.from_dict(val)
 			values.append(score_val)
-		print(values)
+		#print(values)
 		load_scores()
 
 
@@ -90,6 +92,10 @@ func _on_visibility_changed() -> void:
 
 
 func _on_color_picker_color_changed(_color: Color) -> void:
-	color_picker.visible = false
+	color_picker_button.modulate = _color
+
+
+func _on_button_pressed() -> void:
+	color_picker_container.visible = false
 	new_highscore.visible = true
-	color = _color
+	color = color_picker_button.modulate
