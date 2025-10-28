@@ -11,8 +11,13 @@ func _ready() -> void:
 
 
 func _on_timer_timeout() -> void:
-	queue_free()
+	visible = false
 
 
 func _set_text():
 	label.text = text
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		timer.start()
