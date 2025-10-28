@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://da263pyuxpr6"]
+[gd_scene load_steps=4 format=3 uid="uid://da263pyuxpr6"]
 
 [ext_resource type="Script" path="res://scripts/menu_ui.gd" id="1_i4hr5"]
+[ext_resource type="PackedScene" uid="uid://csrtgipxxda5j" path="res://scenes/tooltip.tscn" id="2_p0ef1"]
 
 [sub_resource type="Theme" id="Theme_tph5v"]
 
@@ -13,6 +14,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -180.5
+offset_right = 46.5
+offset_bottom = 180.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -29,9 +34,16 @@ text = "Play"
 layout_mode = 2
 text = "Highscores"
 
-[node name="UpgradesButton" type="Button" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="UpgradesButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Upgrades"
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "?"
 
 [node name="AboutButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -49,10 +61,16 @@ text = "Profile"
 layout_mode = 2
 text = "Quit"
 
+[node name="Tooltip" parent="." instance=ExtResource("2_p0ef1")]
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "asdasdasdsa"
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HighscoresButton" to="." method="_on_highscores_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/UpgradesButton" to="." method="_on_upgrades_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/UpgradesButton" to="." method="_on_upgrades_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/AboutButton" to="." method="_on_about_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ProfileButton" to="." method="_on_profile_button_pressed"]

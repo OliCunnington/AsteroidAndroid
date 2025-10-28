@@ -19,5 +19,9 @@ func _set_text():
 
 
 func _on_visibility_changed() -> void:
-	if visible:
+	if visible and timer:
 		timer.start()
+
+
+func set_tip(s):
+	label.text = s

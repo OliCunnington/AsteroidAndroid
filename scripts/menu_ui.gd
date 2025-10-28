@@ -2,6 +2,7 @@ extends CanvasLayer
 
 
 @onready var settings_button: Button = $VBoxContainer/SettingsButton
+@onready var tooltip: Panel = $Tooltip
 
 @export var settings : SettingsScene
 
@@ -56,3 +57,8 @@ func _settings_check():
 		settings_button.modulate = Color.YELLOW
 	else:
 		settings_button.modulate = Color.WHITE
+
+
+func _on_button_pressed() -> void:
+	tooltip.set_tip("Spend your total score on permanent upgrades")
+	tooltip.visible = true

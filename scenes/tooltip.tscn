@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/tooltip.gd" id="1_uxi8j"]
 
 [node name="Tooltip" type="Panel"]
+modulate = Color(0.20871, 0.20871, 0.20871, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,7 +26,10 @@ theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
 [node name="Label" type="Label" parent="MarginContainer"]
+top_level = true
 layout_mode = 2
+size_flags_horizontal = 4
+text = "tgeadsdd"
 horizontal_alignment = 1
 vertical_alignment = 1
 
