@@ -1,6 +1,6 @@
-extends Panel
+extends CanvasLayer
 
-@onready var label: Label = $MarginContainer/Label
+@onready var label: Label = $VBoxContainer/Label
 @onready var timer: Timer = $Timer
 
 @export var text : String

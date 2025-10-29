@@ -62,6 +62,7 @@ layout_mode = 2
 text = "Quit"
 
 [node name="Tooltip" parent="." instance=ExtResource("2_p0ef1")]
+visible = false
 size_flags_horizontal = 6
 size_flags_vertical = 6
 text = "asdasdasdsa"

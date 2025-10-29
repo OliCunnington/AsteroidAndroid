@@ -2,7 +2,7 @@ extends CanvasLayer
 
 
 @onready var settings_button: Button = $VBoxContainer/SettingsButton
-@onready var tooltip: Panel = $Tooltip
+@onready var tooltip: CanvasLayer = $Tooltip
 
 @export var settings : SettingsScene
 

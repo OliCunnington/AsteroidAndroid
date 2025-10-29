@@ -2,34 +2,30 @@
 
 [ext_resource type="Script" path="res://scripts/tooltip.gd" id="1_uxi8j"]
 
-[node name="Tooltip" type="Panel"]
-modulate = Color(0.20871, 0.20871, 0.20871, 1)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Tooltip" type="CanvasLayer"]
+layer = 3
 script = ExtResource("1_uxi8j")
+text = "tool tip text"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0.169245, 0.169245, 0.169245, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 64
 
-[node name="Label" type="Label" parent="MarginContainer"]
-top_level = true
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-text = "tgeadsdd"
+text = "TOOL TIP TEXT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
