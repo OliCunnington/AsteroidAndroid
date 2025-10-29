@@ -6,10 +6,10 @@ signal settings_back_button_pressed
 @onready var menu_banner = $VBoxContainer/MenuBanner
 @onready var fullscreen = $VBoxContainer/Fullscreen
 @onready var game_banner = $VBoxContainer/GameBanner
-@onready var rewarded_on_highscore = $VBoxContainer/RewardedOnHighscore
-@onready var rewarded_on_start = $VBoxContainer/RewardedOnStart
-#@onready var native_advanced = $VBoxContainer/NativeAdvanced
-#@onready var on_open = $VBoxContainer/OnOpen
+@onready var rewarded_on_highscore: CheckButton = $VBoxContainer/HBoxContainer/RewardedOnHighscore
+@onready var rewarded_on_start: CheckButton = $VBoxContainer/HBoxContainer2/RewardedOnStart
+@onready var tooltip: CanvasLayer = $Tooltip
+
 
 
 func _ready():
@@ -96,3 +96,12 @@ func all_off() -> bool:
 	var a = not mb and not gb and not fs and not roh and not ros
 	#print_debug(a, mb, gb, fs, roh, ros)
 	return a
+
+
+func _on_button_pressed() -> void:
+	tooltip.set_tip("Double points towards upgrade and pick a color for highscore text")
+	tooltip.visible = true
+
+func _on_button_pressed_2() -> void:
+	tooltip.set_tip("Start the game with one extra Hull health")
+	tooltip.visible = true
