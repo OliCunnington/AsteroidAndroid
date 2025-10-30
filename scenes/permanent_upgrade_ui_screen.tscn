@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dma3jsct6rlt8"]
+[gd_scene load_steps=5 format=3 uid="uid://dma3jsct6rlt8"]
 
 [ext_resource type="Script" path="res://scripts/permanent_upgrade_ui_screen.gd" id="1_mqf2q"]
+[ext_resource type="AudioStream" uid="uid://ca86cn1yn8ur1" path="res://assets/sounds/Upgraded.wav" id="2_mky3c"]
+[ext_resource type="AudioStream" uid="uid://c5hws7bx2ftql" path="res://assets/sounds/UpgradFailed.wav" id="3_qhtqg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch783"]
 size = Vector2(175, 50)
@@ -209,6 +211,12 @@ text = "Back"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Upgrade" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_mky3c")
+
+[node name="UpgradeFailed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qhtqg")
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

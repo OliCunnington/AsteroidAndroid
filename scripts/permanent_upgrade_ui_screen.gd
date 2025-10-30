@@ -8,6 +8,8 @@ extends CanvasLayer
 @onready var rof_price_label: Label = $VBoxContainer/Control3/PriceLabel
 @onready var delay_price_label: Label = $VBoxContainer/Control4/PriceLabel
 @onready var recharge_price_label: Label = $VBoxContainer/Control5/PriceLabel
+@onready var upgrade: AudioStreamPlayer2D = $Upgrade
+@onready var upgrade_failed: AudioStreamPlayer2D = $UpgradeFailed
 
 signal exit_pressed
 
@@ -71,8 +73,10 @@ func _purchase(_label):
 		_label.text = str(p*2)
 		_save() 
 		_update_label()
+		upgrade.play()
 		return true
 	else:
+		upgrade_failed.play()
 		return false
 
 
