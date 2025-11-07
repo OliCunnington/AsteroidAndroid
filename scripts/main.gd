@@ -158,6 +158,10 @@ func _on_about_settings_pressed() -> void:
 func _on_settings_settings_back_button_pressed():
 	settings.visible = false
 	menu.visible = true
+	if AdManager.banner_in_menu and not ad_view:
+		banner_advert()
+	elif not AdManager.banner_in_menu and ad_view:
+		hide_banner_advert()
 
 
 func _on_menu_upgrades_button_pressed() -> void:
@@ -266,7 +270,8 @@ func banner_advert():
 
 func hide_banner_advert():
 	if ad_view:
-		ad_view.hide()
+		ad_view.destroy()
+		ad_view = null
 
 
 func fullscreen_advert():
