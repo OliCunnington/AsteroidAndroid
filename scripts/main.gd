@@ -35,6 +35,7 @@ var on_user_earned_reward_listener := OnUserEarnedRewardListener.new()
 
 
 func _ready():
+	print_debug(_get("version/code"))
 	show_notification("ready notification, test")
 	color_rect.size = screen_size
 	player.position = screen_size/2
@@ -65,8 +66,7 @@ func _ready():
 	fullscreen_advert()
 	fullscreen_rewarded_advert()
 	
-	if AdManager.banner_in_menu:
-		banner_advert()
+	banner_advert(false)
 		#ad_view.show()
 	highscores.last_score = -1
 
@@ -78,10 +78,7 @@ func _on_player_dead():
 			interstitial_ad.show()
 		else:
 			show_notification("no interstitial")
-	if AdManager.banner_in_menu:
-		banner_advert()
-	else:
-		hide_banner_advert()
+	banner_advert(false)
 	
 	player.animation_player.play("RESET")
 	player.visible = false
@@ -102,7 +99,7 @@ func _on_play_button_pressed():
 		else:
 			show_notification("no rewarded interstitial")
 	if AdManager.banner_in_game:
-		banner_advert()
+		banner_advert(true)
 	else:
 		hide_banner_advert()
 		
@@ -138,6 +135,7 @@ func _on_back_button_pressed():
 func _on_highscores_back_button_pressed():
 	menu.visible = true
 	highscores.visible = false
+	banner_advert(false)
 
 
 func _on_menu_highscores_button_pressed():
@@ -158,10 +156,11 @@ func _on_about_settings_pressed() -> void:
 func _on_settings_settings_back_button_pressed():
 	settings.visible = false
 	menu.visible = true
-	if AdManager.banner_in_menu and not ad_view:
-		banner_advert()
-	elif not AdManager.banner_in_menu and ad_view:
-		hide_banner_advert()
+	#if AdManager.banner_in_menu and not ad_view:
+		#banner_advert()
+	#elif not AdManager.banner_in_menu and ad_view:
+		#hide_banner_advert()
+	banner_advert(false)
 
 
 func _on_menu_upgrades_button_pressed() -> void:
@@ -256,10 +255,13 @@ func resume_from_upgrade():
 	Engine.time_scale = 1
 
 
-func banner_advert():
-	#if ad_view:
-		#ad_view.destroy()
-		#ad_view = null
+func banner_advert(game: bool):
+	hide_banner_advert()
+	if (game and AdManager.banner_in_game) or AdManager.banner_in_menu:
+		_load_banner()
+
+
+func _load_banner():
 	ad_view = AdView.new(
 		AdManager.BANNER_ID,
 		AdSize.get_current_orientation_anchored_adaptive_banner_ad_size(AdSize.FULL_WIDTH),
